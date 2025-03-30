@@ -1,0 +1,9 @@
+/**
+ * @dir app
+ * 
+ * @brief Holds the application code.
+ * 
+ * For such a simple application, this directory only contains the Main.cpp 
+ * and Main.h files. The Main.cpp file contains the main function, which is
+ * the entry point of the application.
+ */

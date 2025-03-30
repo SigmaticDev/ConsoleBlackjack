@@ -1,0 +1,8 @@
+/**
+ * @namespace CBJCards
+ * 
+ * @brief Holds abstractions related to a deck of playing cards.
+ *
+ * This namespace contains all the classes and enums related to a deck of
+ * playing cards.
+ */
