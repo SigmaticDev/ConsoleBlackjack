@@ -101,6 +101,11 @@ namespace CBJDisplay {
             bool expand = false
         );
 
+        friend std::ostream& operator<<(
+            std::ostream& os,
+            const CharMap& cm
+        );
+
     private:
         struct OverlayBounds {
             int thisX1;

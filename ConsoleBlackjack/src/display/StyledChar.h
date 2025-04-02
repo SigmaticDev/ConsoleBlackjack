@@ -8,6 +8,7 @@ namespace CBJDisplay {
 
     class StyledChar {
     public:
+        StyledChar();
         StyledChar(char c);
         StyledChar(
             char c,

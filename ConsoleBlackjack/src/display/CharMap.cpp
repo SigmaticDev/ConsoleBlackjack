@@ -396,7 +396,7 @@ CharMap::OverlayBounds CBJDisplay::CharMap::prepareOverlay(
     int yOffset, 
     bool expand)
 {
-    OverlayBounds bounds;
+    OverlayBounds bounds = {};
 
     int otherX1, otherX2, otherY1, otherY2;
     int thisX1, thisX2, thisY1, thisY2;
@@ -464,4 +464,15 @@ CharMap::OverlayBounds CBJDisplay::CharMap::prepareOverlay(
     bounds.effectiveHeight = thisY2 - thisY1 + 1;
 
     return bounds;
+}
+
+std::ostream& CBJDisplay::operator<<(std::ostream& os, const CharMap& cm)
+{
+    for (const auto& row : cm.rawChars()) {
+        for (const auto& sc : row) {
+            os << sc;
+        }
+        os << std::endl;
+    }
+    return os;
 }

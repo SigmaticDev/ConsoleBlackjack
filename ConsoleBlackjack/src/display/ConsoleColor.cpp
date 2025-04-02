@@ -42,7 +42,7 @@ ValidColor CBJDisplay::ConsoleColor::colorByEnum() const
 {
     ValidColor color;
 
-    int colorCode = (m_red << 2) | (m_green << 1) | m_blue;
+    int colorCode = ((int)m_red << 2) | ((int)m_green << 1) | (int)m_blue;
 
     switch (colorCode)
     {

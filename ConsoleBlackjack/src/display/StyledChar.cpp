@@ -4,6 +4,12 @@
 
 using namespace CBJDisplay;
 
+CBJDisplay::StyledChar::StyledChar()
+    : m_char(' ')
+    , m_foregroundColor("WHITE", true)
+    , m_backgroundColor("BLACK", false)
+{}
+
 CBJDisplay::StyledChar::StyledChar(char c)
     : m_char(c)
     , m_foregroundColor("WHITE", true)
