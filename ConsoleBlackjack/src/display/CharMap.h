@@ -7,6 +7,9 @@
 
 namespace CBJDisplay {
 
+    static const int CHARMAP_MAX_WIDTH = 80;
+    static const int CHARMAP_MAX_HEIGHT = 60;
+
     class CharMap {
     public:
         CharMap();
@@ -56,11 +59,65 @@ namespace CBJDisplay {
 
         void setWidth(int width);
         void setHeight(int height);
-        void setDefaultForegroundColor(ConsoleColor color);
-        void setDefaultBackgroundColor(ConsoleColor color);
+        void setDefaultForegroundColor(ConsoleColor color) {
+            m_defaultForegroundColor = color;
+        }
+        void setDefaultBackgroundColor(ConsoleColor color) {
+            m_defaultBackgroundColor = color;
+        }
         void setAt(int x, int y, StyledChar sc, bool expand = false);
+        void setAt(int x, int y, char c, bool expand = false);
+        void setAt(
+            int x,
+            int y,
+            char c,
+            ConsoleColor foregroundColor,
+            ConsoleColor backgroundColor,
+            bool expand = false
+        );
+
+        void fill(StyledChar sc);
+        void fill(char c);
+        void fill(
+            char c,
+            ConsoleColor foregroundColor,
+            ConsoleColor backgroundColor
+        );
+
+        void clear();
+        void shrinkToZero();
+
+        void overlay(
+            const CharMap& other,
+            int xOffset = 0,
+            int yOffset = 0,
+            bool expand = false
+        );
+        void overlay(
+            const CharMap& other,
+            int xOffset,
+            int yOffset,
+            StyledChar transparencyKey,
+            bool expand = false
+        );
 
     private:
+        struct OverlayBounds {
+            int thisX1;
+            int otherX1;
+            int effectiveWidth;
+            int thisY1;
+            int otherY1;
+            int effectiveHeight;
+        };
+
+        OverlayBounds prepareOverlay(
+            const CharMap& other,
+            int xOffset,
+            int yOffset,
+            bool expand
+        );
+
         int m_width;
         int m_height;
         ConsoleColor m_defaultForegroundColor;

@@ -27,6 +27,8 @@ namespace CBJDisplay {
             m_backgroundColor = color;
         }
 
+        bool operator==(const StyledChar& other) const;
+
         friend std::ostream& operator<<(
             std::ostream& os, 
             const StyledChar& sc
@@ -37,7 +39,4 @@ namespace CBJDisplay {
         ConsoleColor m_foregroundColor;
         ConsoleColor m_backgroundColor;
     };
-
-    
-
 }

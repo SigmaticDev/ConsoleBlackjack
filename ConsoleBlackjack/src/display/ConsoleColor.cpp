@@ -110,6 +110,16 @@ void CBJDisplay::ConsoleColor::setColor(
     m_intense = isIntense;
 }
 
+bool CBJDisplay::ConsoleColor::operator==(const ConsoleColor& other) const
+{
+    return (
+        m_red == other.m_red &&
+        m_green == other.m_green &&
+        m_blue == other.m_blue &&
+        m_intense == other.m_intense
+    );
+}
+
 bool CBJDisplay::ConsoleColor::colorIsRed(ValidColor color)
 {
 	bool result = false;

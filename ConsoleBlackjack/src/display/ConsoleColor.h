@@ -61,6 +61,8 @@ namespace CBJDisplay {
         void setBlue(bool isBlue) { m_blue = isBlue; }
         void setIntense(bool isIntense) { m_intense = isIntense; }
 
+        bool operator==(const ConsoleColor& other) const;
+
     private:
         static bool colorIsRed(ValidColor color);
         static bool colorIsGreen(ValidColor color);

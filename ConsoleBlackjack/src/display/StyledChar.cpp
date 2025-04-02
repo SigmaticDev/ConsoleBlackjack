@@ -19,6 +19,16 @@ CBJDisplay::StyledChar::StyledChar(
     , m_backgroundColor(backgroundColor)
 {}
 
+bool CBJDisplay::StyledChar::operator==(
+    const StyledChar & other) const
+{
+    return (
+        m_char == other.m_char &&
+        m_foregroundColor == other.m_foregroundColor &&
+        m_backgroundColor == other.m_backgroundColor
+    );
+}
+
 std::ostream& CBJDisplay::operator<<(
     std::ostream& os, 
     const StyledChar& sc)
