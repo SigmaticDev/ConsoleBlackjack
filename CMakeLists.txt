@@ -39,7 +39,7 @@ option(ENABLE_TESTS
 
 option(ENABLE_DOCS
     "Enable documentation generation with Doxygen"
-    ON
+    OFF
 )
 
 set(PROJ_DESC "\
@@ -55,12 +55,12 @@ project("ConsoleBlackjack"
 )
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/${CMAKE_PROJECT_NAME}/cmake/")
-include(docs)
 
 # Include sub-projects.
 add_subdirectory ("${CMAKE_PROJECT_NAME}")
 
 if(ENABLE_DOCS)
+    include(docs)
 	generate_docs()
 endif()
 
