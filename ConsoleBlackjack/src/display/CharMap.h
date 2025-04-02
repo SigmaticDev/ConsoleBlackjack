@@ -84,6 +84,21 @@ namespace CBJDisplay {
             ConsoleColor backgroundColor
         );
 
+        void paintAt(
+            int x,
+            int y,
+            ConsoleColor foregroundColor,
+            ConsoleColor backgroundColor
+        );
+        void paintAcross(
+            int x1,
+            int x2,
+            int y1,
+            int y2,
+            ConsoleColor foregroundColor,
+            ConsoleColor backgroundColor
+        );
+
         void clear();
         void shrinkToZero();
 

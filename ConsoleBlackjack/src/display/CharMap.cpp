@@ -323,6 +323,48 @@ void CBJDisplay::CharMap::fill(
     );
 }
 
+void CBJDisplay::CharMap::paintAt(
+    int x, 
+    int y, 
+    ConsoleColor foregroundColor, 
+    ConsoleColor backgroundColor)
+{
+    auto valid = (
+        x >= 0 && x < m_width &&
+        y >= 0 && y < m_height
+    );
+
+    if (valid) {
+        m_charMap[y][x].setForegroundColor(foregroundColor);
+        m_charMap[y][x].setBackgroundColor(backgroundColor);
+    }
+}
+
+void CBJDisplay::CharMap::paintAcross(
+    int x1, int x2, 
+    int y1, int y2, 
+    ConsoleColor foregroundColor, 
+    ConsoleColor backgroundColor)
+{
+    auto valid = (
+        x2 >= x1 && y2 >= y1
+    );
+
+    if (x1 < 0) x1 = 0;
+    if (x2 >= m_width) x2 = m_width - 1;
+    if (y1 < 0) y1 = 0;
+    if (y2 >= m_height) y2 = m_height - 1;
+
+    if (valid) {
+        for (int y = y1; y <= y2; y++) {
+            for (int x = x1; x <= x2; x++) {
+                m_charMap[y][x].setForegroundColor(foregroundColor);
+                m_charMap[y][x].setBackgroundColor(backgroundColor);
+            }
+        }
+    }
+}
+
 void CBJDisplay::CharMap::clear()
 {
     fill(
