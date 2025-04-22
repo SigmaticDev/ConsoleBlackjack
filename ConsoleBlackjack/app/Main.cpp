@@ -2,7 +2,10 @@
 //
 
 #include "Main.h"
+
 #include "Card.h"
+#include "Hand.h"
+#include "ScorerInterface.h"
 #include "StyledChar.h"
 
 #include <vector>
@@ -56,7 +59,25 @@ int main()
         cout << sc;
         cout << "X";
     }
+    cout << endl;
 
+    Hand hand;
+
+    hand.addCard(std::make_unique<Card>(Card(Suit::SPADES, Rank::ACE)));
+    hand.addCard(std::make_unique<Card>(Card(Suit::DIAMONDS, Rank::TWO)));
+    hand.addCard(std::make_unique<Card>(Card(Suit::DIAMONDS, Rank::ACE)));
+
+    auto& handCards = hand.cards();
+
+    cout << handCards[0]->toString() << endl;
+    cout << handCards[1]->toString() << endl;
+    cout << handCards[2]->toString() << endl;
+
+    auto scorer = CBJGame::ScorerInterface::getScorer();
+
+    auto score = scorer->score(hand);
+
+    cout << "Score = " << score << endl;
 
 	return 0;
 }

@@ -18,4 +18,5 @@ target_include_directories(${EXECUTABLE_NAME} PUBLIC
 target_link_libraries(${EXECUTABLE_NAME} 
 	${CARDS_LIB_NAME}
 	${DISPLAY_LIB_NAME}
+	${GAME_LIB_NAME}
 )
