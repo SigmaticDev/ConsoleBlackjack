@@ -4,6 +4,7 @@
 #include "Main.h"
 
 #include "Card.h"
+#include "Deck.h"
 #include "Hand.h"
 #include "ScorerInterface.h"
 #include "StyledChar.h"
@@ -77,7 +78,21 @@ int main()
 
     auto score = scorer->score(hand);
 
-    cout << "Score = " << score << endl;
+    cout << "Score = " << score << endl << endl;
+
+    auto deck = Deck();
+
+    deck.addCardTop(std::make_unique<Card>(Card(Suit::CLUBS, Rank::TEN)));
+    deck.addCardTop(std::make_unique<Card>(Card(Suit::CLUBS, Rank::NINE)));
+    deck.addCardTop(std::make_unique<Card>(Card(Suit::CLUBS, Rank::EIGHT)));
+    deck.addCardTop(std::make_unique<Card>(Card(Suit::SPADES, Rank::ACE)));
+
+    deck.shuffle();
+
+    cout << "First card off deck: " << deck.draw()->toString() << endl;
+    cout << "Second card off deck: " << deck.draw()->toString() << endl;
+    cout << "Third card off deck: " << deck.draw()->toString() << endl;
+    cout << "Fourth card off deck: " << deck.draw()->toString() << endl;
 
 	return 0;
 }
